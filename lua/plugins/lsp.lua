@@ -17,6 +17,16 @@ return {
       servers = {
         -- ruff-lsp will be automatically installed with mason and loaded with lspconfig
         ruff_lsp = {},
+        tsserver = {
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+          },
+        },
       },
     },
   },
