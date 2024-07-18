@@ -1,14 +1,17 @@
 return {
+  -- disable supertab for LuaSnip
   {
     "L3MON4D3/LuaSnip",
     keys = function()
       return {}
     end,
   },
+  -- then: setup supertab in cmp
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-emoji",
+      "zbirenbaum/copilot-cmp",
     },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
