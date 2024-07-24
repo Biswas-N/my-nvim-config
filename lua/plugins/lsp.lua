@@ -15,8 +15,16 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
-        -- ruff-lsp will be automatically installed with mason and loaded with lspconfig
-        ruff_lsp = {},
+        ruff_lsp = {
+          root_dir = function(fname)
+            return require("lspconfig").util.find_git_ancestor(fname) or vim.loop.cwd()
+          end,
+        },
+        jedi_language_server = {
+          root_dir = function(fname)
+            return require("lspconfig").util.find_git_ancestor(fname) or vim.loop.cwd()
+          end,
+        },
         tsserver = {
           filetypes = {
             "javascript",
