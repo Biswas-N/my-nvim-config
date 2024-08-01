@@ -15,7 +15,7 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
-        ruff_lsp = {
+        ruff = {
           root_dir = function(fname)
             return require("lspconfig").util.find_git_ancestor(fname) or vim.loop.cwd()
           end,
