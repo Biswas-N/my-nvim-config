@@ -19,6 +19,19 @@ return {
           root_dir = function(fname)
             return require("lspconfig").util.find_git_ancestor(fname) or vim.loop.cwd()
           end,
+          cmd_env = { RUFF_TRACE = "messages" },
+          init_options = {
+            settings = {
+              logLevel = "error",
+            },
+          },
+          keys = {
+            {
+              "<leader>co",
+              LazyVim.lsp.action["source.organizeImports"],
+              desc = "Organize Imports",
+            },
+          },
         },
         jedi_language_server = {
           root_dir = function(fname)
