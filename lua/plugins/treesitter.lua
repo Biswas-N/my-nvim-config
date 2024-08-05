@@ -1,13 +1,10 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      -- add tsx and treesitter
-      vim.list_extend(opts.ensure_installed, {
-        "tsx",
-        "typescript",
-        "rust",
-      })
-    end,
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  opts = {
+    auto_install = true,
+    sync_install = true,
+    highlight = { enable = true },
+    indent = { enable = true },
   },
 }
