@@ -1,5 +1,6 @@
 return {
   "folke/which-key.nvim",
+  dependencies = { "echasnovski/mini.nvim", version = false },
   event = "VeryLazy",
   keys = {
     {
