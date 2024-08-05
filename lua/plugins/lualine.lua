@@ -6,4 +6,5 @@ return {
       lualine_x = { "encoding", { "fileformat", symbols = { unix = "" } }, "filetype" },
     },
   },
+  event = "VeryLazy",
 }
