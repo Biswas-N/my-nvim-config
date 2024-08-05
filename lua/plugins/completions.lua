@@ -58,7 +58,7 @@ return {
         formatting = {
           format = lspkind.cmp_format({
             mode = "symbol_text", -- Show symbol and text
-            maxwidth = 50,   -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            maxwidth = 50, -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             ellipsis_char = "...", -- When popup menu exceed maxwidth, the truncated part will show ellipsis_char instead
             symbol_map = { Copilot = "" },
           }),

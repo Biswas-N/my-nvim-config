@@ -23,9 +23,9 @@ return {
       end,
       desc = "Find by Open Filename",
     },
-    { "gd", "<cmd>Telescope lsp_definitions<cr>",      desc = "Goto Definition" },
-    { "gr", "<cmd>Telescope lsp_references<cr>",       desc = "References",            nowait = true },
-    { "gI", "<cmd>Telescope lsp_implementations<cr>",  desc = "Goto Implementation" },
+    { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition" },
+    { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References", nowait = true },
+    { "gI", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
     { "gy", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto T[y]pe Definition" },
   },
   -- This is your opts table

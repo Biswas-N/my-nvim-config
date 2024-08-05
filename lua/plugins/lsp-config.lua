@@ -119,14 +119,14 @@ return {
       "nvimtools/none-ls.nvim",
     },
     keys = {
-      { "<leader>cl", "<cmd>LspInfo<cr>",         desc = "Lsp Info" },
-      { "gD",         vim.lsp.buf.declaration,    desc = "Goto Declaration" },
-      { "K",          vim.lsp.buf.hover,          desc = "Hover" },
-      { "gK",         vim.lsp.buf.signature_help, desc = "Signature Help" },
-      { "<c-k>",      vim.lsp.buf.signature_help, mode = "i",               desc = "Signature Help" },
-      { "<leader>ca", vim.lsp.buf.code_action,    desc = "Code Action",     mode = { "n", "v" } },
-      { "<leader>cr", vim.lsp.buf.rename,         desc = "Rename" },
-      { "<leader>cf", vim.lsp.buf.format,         desc = "Format File" },
+      { "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
+      { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
+      { "K", vim.lsp.buf.hover, desc = "Hover" },
+      { "gK", vim.lsp.buf.signature_help, desc = "Signature Help" },
+      { "<c-k>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help" },
+      { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
+      { "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
+      { "<leader>cf", vim.lsp.buf.format, desc = "Format File" },
     },
     config = function()
       local lspconfig = require("lspconfig")
