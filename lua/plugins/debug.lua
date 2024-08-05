@@ -47,7 +47,8 @@ return {
       py_dap.setup("python")
 
       -- Python Debug based keymaps
-      vim.keymap.set("n", "<leader>dpr", py_dap.test_method, { desc = "Debug Python Run", remap = true })
+      vim.keymap.set("n", "<leader>dpm", py_dap.test_method, { desc = "Debug Python Test Method", remap = true })
+      vim.keymap.set("n", "<leader>dpc", py_dap.test_class, { desc = "Debug Python Test Class", remap = true })
     end,
   },
 }
