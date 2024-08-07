@@ -25,7 +25,7 @@ map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })
 map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
 -- Clear search with <esc>
-map("n", "<esc>s", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
+map("n", "<leader>s<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
 
 -- save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
@@ -36,10 +36,6 @@ map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
-
--- commenting
-map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
-map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
 
 -- lazy
 map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
@@ -69,24 +65,6 @@ map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
 map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
--- lazygit
--- map("n", "<leader>gg", function() LazyVim.lazygit( { cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
--- map("n", "<leader>gG", function() LazyVim.lazygit() end, { desc = "Lazygit (cwd)" })
--- map("n", "<leader>gb", LazyVim.lazygit.blame_line, { desc = "Git Blame Line" })
--- map("n", "<leader>gB", LazyVim.lazygit.browse, { desc = "Git Browse" })
---
--- map("n", "<leader>gf", function()
---   local git_path = vim.api.nvim_buf_get_name(0)
---   LazyVim.lazygit({args = { "-f", vim.trim(git_path) }})
--- end, { desc = "Lazygit Current File History" })
---
--- map("n", "<leader>gl", function()
---   LazyVim.lazygit({ args = { "log" }, cwd = LazyVim.root.git() })
--- end, { desc = "Lazygit Log" })
--- map("n", "<leader>gL", function()
---   LazyVim.lazygit({ args = { "log" } })
--- end, { desc = "Lazygit Log (cwd)" })
-
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 
@@ -95,14 +73,8 @@ map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 map("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
 
 -- Terminal Mappings
-map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+map("t", "<C-/>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("n", "<leader>t", "<cmd>vsp<cr><cmd>term<cr><S-a>", { desc = "Create Terminal to right" })
-map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to Left Window" })
-map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to Lower Window" })
-map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to Upper Window" })
-map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to Right Window" })
-map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
 -- windows
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
