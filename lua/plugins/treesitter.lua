@@ -3,9 +3,15 @@ return {
   build = ":TSUpdate",
   lazy = false,
   opts = {
-    ensure_installed = { "python", "javascript", "csv" },
+    ensure_installed = { "python", "rust" },
     auto_install = true,
-    sync_install = true,
-    highlight = { enable = true },
+    highlight = {
+      additional_vim_regex_highlighting = false,
+      enable = true,
+    },
+    indent = { enable = true },
   },
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }

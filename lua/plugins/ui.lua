@@ -10,9 +10,8 @@ return {
           enable = true,
         },
         shortcut = {
-          { desc = "Update", group = "@property", action = "Lazy update", key = "u" },
+          { desc = "Update", action = "Lazy update", key = "u" },
           {
-            icon_hl = "@variable",
             desc = "Files",
             action = "Telescope find_files",
             key = "f",
@@ -21,6 +20,11 @@ return {
             desc = "Commits",
             action = "Telescope git_commits",
             key = "g",
+          },
+          {
+            desc = "Quit",
+            action = "qa",
+            key = "q",
           },
         },
       },
