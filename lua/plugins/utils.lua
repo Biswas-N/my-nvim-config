@@ -26,7 +26,7 @@ return {
   },
   {
     "folke/which-key.nvim",
-    dependencies = { "echasnovski/mini.nvim", version = false },
+    dependencies = { "echasnovski/mini.nvim" },
     event = "VeryLazy",
     keys = {
       {
@@ -53,5 +53,12 @@ return {
       "rcarriga/nvim-notify",
     },
   },
-  { "echasnovski/mini.comment", version = "*", opts = {} },
+  {
+    "echasnovski/mini.nvim",
+    version = "*",
+    config = function()
+      -- Enable sub-plugins
+      require("mini.surround").setup()
+    end,
+  },
 }
