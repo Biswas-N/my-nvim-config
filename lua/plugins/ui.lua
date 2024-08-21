@@ -59,21 +59,48 @@ return {
         theme = "catppuccin",
       },
       sections = {
+        lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = {
           { "filename", path = 1 }, -- This will show the relative path
         },
+        lualine_x = { "encoding", "filetype" },
+        lualine_y = {},
+        lualine_z = { "location" },
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = { "location" },
+        lualine_y = {},
+        lualine_z = {},
+      },
+      winbar = {
+        lualine_b = { { "buffers", symbols = { alternate_file = "" } } },
+        lualine_z = { "tabs" },
+      },
+      inactive_winbar = {
+        lualine_b = { "filename" },
       },
     },
   },
   {
-    "akinsho/bufferline.nvim",
-    version = "4.7.0",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    "rcarriga/nvim-notify",
     opts = {},
   },
   {
-    "rcarriga/nvim-notify",
+    "stevearc/oil.nvim",
+    dependencies = { "echasnovski/mini.icons", "nvim-tree/nvim-web-devicons" },
+    event = "VimEnter",
     opts = {},
+    keys = {
+      {
+        "-",
+        "<cmd>Oil<CR>",
+        desc = "Open Oil",
+        mode = "n",
+      },
+    },
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -83,13 +110,13 @@ return {
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
+    lazy = true,
     opts = {
       close_if_last_window = true,
       filesystem = {
         follow_current_file = {
           enabled = true,
         },
-        hijack_netrw_behavior = "open_default",
       },
     },
     keys = {
@@ -97,12 +124,12 @@ return {
     },
     init = function()
       vim.g.neo_tree_remove_legacy_commands = true
-      if vim.fn.argc() == 1 then
-        local stat = vim.loop.fs_stat(vim.fn.argv(0))
-        if stat and stat.type == "directory" then
-          require("neo-tree")
-        end
-      end
+      -- if vim.fn.argc() == 1 then
+      --   local stat = vim.loop.fs_stat(vim.fn.argv(0))
+      --   if stat and stat.type == "directory" then
+      --     require("neo-tree")
+      --   end
+      -- end
     end,
   },
 }
