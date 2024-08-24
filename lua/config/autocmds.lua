@@ -129,7 +129,7 @@ vim.filetype.add({
             and path
             and vim.fn.getfsize(path) > vim.g.bigfile_size
             and "bigfile"
-          or nil
+            or nil
       end,
     },
   },
@@ -144,4 +144,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
       vim.bo[ev.buf].syntax = vim.filetype.match({ buf = ev.buf }) or ""
     end)
   end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.http",
+  command = "set filetype=http",
 })
