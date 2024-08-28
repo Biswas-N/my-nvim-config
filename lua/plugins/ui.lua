@@ -59,10 +59,10 @@ return {
         theme = "catppuccin",
       },
       sections = {
-        lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = {
+        lualine_b = {
           { "filename", path = 1 }, -- This will show the relative path
         },
+        lualine_c = { "branch", "diff", "diagnostics" },
         lualine_x = { "encoding", "filetype" },
         lualine_y = {},
         lualine_z = { "location" },
@@ -77,7 +77,6 @@ return {
       },
       winbar = {
         lualine_b = { { "buffers", symbols = { alternate_file = "" } } },
-        lualine_z = { "tabs" },
       },
       inactive_winbar = {
         lualine_b = { "filename" },

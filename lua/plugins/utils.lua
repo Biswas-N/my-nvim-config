@@ -27,15 +27,6 @@ return {
         desc = "Previous Git Hunk",
         mode = "n",
       },
-    }
-  },
-  {
-    {
-      "ojroques/nvim-osc52",
-      lazy = true,
-      opts = {
-        tmux_passthrough = true,
-      },
     },
   },
   {
@@ -73,6 +64,7 @@ return {
     config = function()
       -- Enable sub-plugins
       require("mini.surround").setup()
+      require("mini.comment").setup()
     end,
   },
 }
