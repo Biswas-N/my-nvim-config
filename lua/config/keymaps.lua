@@ -12,6 +12,9 @@ map("v", "<leader>l", "$h", { noremap = true, silent = true })
 map({ "n", "v" }, "<leader>h", "0", { noremap = true, silent = true })
 
 -- Move to window using the <ctrl> hjkl keys
+map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
+map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
@@ -73,10 +76,5 @@ map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 map("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
 
 -- Terminal Mappings
-map("t", "<C-/>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+map("t", "<C-n>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("n", "<leader>t", "<cmd>vsp<cr><cmd>term<cr><S-a>", { desc = "Create Terminal to right" })
-
--- windows
-map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })

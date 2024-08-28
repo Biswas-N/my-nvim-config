@@ -63,17 +63,13 @@ return {
           { "filename", path = 1 }, -- This will show the relative path
         },
         lualine_c = { "branch", "diff", "diagnostics" },
-        lualine_x = { "encoding", "filetype" },
-        lualine_y = {},
-        lualine_z = { "location" },
+        lualine_x = { "encoding", "location" },
+        lualine_y = { "filetype" },
+        lualine_z = {},
       },
       inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
         lualine_c = { "filename" },
         lualine_x = { "location" },
-        lualine_y = {},
-        lualine_z = {},
       },
       winbar = {
         lualine_b = { { "buffers", symbols = { alternate_file = "" } } },
@@ -116,6 +112,7 @@ return {
         follow_current_file = {
           enabled = true,
         },
+        hijack_netrw_behavior = "open_default",
       },
     },
     keys = {

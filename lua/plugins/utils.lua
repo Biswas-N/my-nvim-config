@@ -14,15 +14,16 @@ return {
     opts = {
       current_line_blame = true,
     },
+    event = "VeryLazy",
     keys = {
       {
-        "<leader>gn",
+        "]g",
         "<cmd>lua require('gitsigns').next_hunk()<cr>",
         desc = "Next Git Hunk",
         mode = "n",
       },
       {
-        "<leader>gN",
+        "[g",
         "<cmd>lua require('gitsigns').prev_hunk()<cr>",
         desc = "Previous Git Hunk",
         mode = "n",
