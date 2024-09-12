@@ -45,6 +45,8 @@ opt.undofile = true
 opt.undolevels = 10000
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 opt.wrap = false -- Disable line wrap
+opt.foldlevelstart = 99 -- Start with all folds open
+opt.foldenable = true -- Disable folding by default
 
 -- Set filetype to `bigfile` for files larger than 1.5 MB
 -- Only vim syntax will be enabled (with the correct filetype)
