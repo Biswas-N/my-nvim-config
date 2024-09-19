@@ -33,6 +33,11 @@ After adding a new language, ensure the formatters and diagnostic tools are inst
 
 -- Language-specific configurations
 local language_configs = {
+  markdown = {
+    lsp = {
+      name = "marksman",
+    },
+  },
   lua = {
     lsp = {
       name = "lua_ls",

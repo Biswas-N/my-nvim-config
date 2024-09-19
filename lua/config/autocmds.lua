@@ -129,7 +129,7 @@ vim.filetype.add({
             and path
             and vim.fn.getfsize(path) > vim.g.bigfile_size
             and "bigfile"
-            or nil
+          or nil
       end,
     },
   },

@@ -43,7 +43,12 @@ return {
         desc = "Buffer Local Keymaps (which-key)",
       },
     },
-    opts = {},
+    opts = {
+      defaults = {
+        ["<leader>x"] = { name = "+REPL" },
+        ["<leader>xm"] = { name = "+Mark" },
+      },
+    },
   },
   {
     "windwp/nvim-autopairs",

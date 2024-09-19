@@ -4,7 +4,7 @@ return {
     build = ":TSUpdate",
     lazy = false,
     opts = {
-      ensure_installed = { "python", "rust" },
+      ensure_installed = { "python", "rust", "markdown", "markdown_inline" },
       auto_install = true,
       highlight = {
         additional_vim_regex_highlighting = false,
