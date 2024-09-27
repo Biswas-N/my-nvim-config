@@ -95,4 +95,28 @@ return {
     opts = {},
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
   },
+  {
+    "numToStr/FTerm.nvim",
+    opts = {
+      dimensions = {
+        height = 0.9,
+        width = 0.9,
+      },
+      blend = 20,
+    },
+    keys = {
+      {
+        "<leader>t",
+        "<cmd>lua require('FTerm').toggle()<cr>",
+        desc = "Toggle FTerm",
+        mode = "n",
+      },
+      {
+        "<C-t>",
+        '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>',
+        desc = "Toggle FTerm",
+        mode = "t",
+      },
+    },
+  },
 }

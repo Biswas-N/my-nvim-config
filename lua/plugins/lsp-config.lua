@@ -108,7 +108,15 @@ local language_configs = {
     diagnostics = { "ruff" },
   },
   rust = {
-    lsp = { name = "rust_analyzer" },
+    lsp = {
+      name = "rust_analyzer",
+      settings = {
+        cargo = {
+          allFeatures = true,
+        },
+      },
+      cmd = { "rustup", "run", "stable", "rust-analyzer" },
+    },
   },
   -- Add more languages here following the template
 }
@@ -212,6 +220,7 @@ return {
               root_dir = lang_config.lsp.root_dir,
               cmd_env = lang_config.lsp.cmd_env,
               init_options = lang_config.lsp.init_options,
+              cmd = lang_config.lsp.cmd,
             })
           else
             for _, lsp_config in ipairs(lang_config.lsp) do
@@ -223,6 +232,7 @@ return {
                 root_dir = lsp_config.root_dir,
                 cmd_env = lsp_config.cmd_env,
                 init_options = lsp_config.init_options,
+                cmd = lsp_config.cmd,
               })
             end
           end
