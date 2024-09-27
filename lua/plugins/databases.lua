@@ -30,5 +30,11 @@ return {
         { name = "buffer" },
       },
     })
+
+    -- Add autocmd to resize dbout buffer
+    vim.api.nvim_create_autocmd("BufWinEnter", {
+      pattern = "*.dbout",
+      command = "resize 50",
+    })
   end,
 }
