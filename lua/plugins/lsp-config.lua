@@ -33,6 +33,32 @@ After adding a new language, ensure the formatters and diagnostic tools are inst
 
 -- Language-specific configurations
 local language_configs = {
+  go = {
+    lsp = {
+      name = "gopls",
+      cmd = { "gopls" },
+      filetypes = { "go", "gomod", "gowork", "gotmpl" },
+      root_dir = function(fname)
+        return require("lspconfig").util.find_git_ancestor(fname) or vim.loop.cwd()
+      end,
+      settings = {
+        gopls = {
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+            unusedparams = true,
+          },
+        },
+      },
+      config = function()
+        vim.opt.line = false
+      end,
+    },
+    -- go install -v github.com/incu6us/goimports-reviser/v3@latest
+    -- go install mvdan.cc/gofumpt@latest
+    -- go install github.com/segmentio/golines@latest
+    formatters = { "gofumpt", "goimports_reviser", "golines" },
+  },
   markdown = {
     lsp = {
       name = "marksman",
