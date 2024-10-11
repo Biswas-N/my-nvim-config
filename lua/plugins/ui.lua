@@ -51,6 +51,25 @@ return {
     end,
   },
   {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    opts = {
+      options = {
+        diagnostics = "nvim_lsp",
+        always_show_bufferline = false,
+        offsets = {
+          {
+            filetype = "neo-tree",
+            text = "Neo-tree",
+            highlight = "Directory",
+            text_align = "left",
+          },
+        },
+      },
+    },
+  },
+  {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
@@ -71,17 +90,32 @@ return {
         lualine_c = { "filename" },
         lualine_x = { "location" },
       },
-      winbar = {
-        lualine_b = { { "buffers", symbols = { alternate_file = "" } } },
-      },
-      inactive_winbar = {
-        lualine_b = { "filename" },
-      },
     },
   },
   {
     "rcarriga/nvim-notify",
-    opts = {},
+    keys = {
+      {
+        "<leader>un",
+        function()
+          require("notify").dismiss({ silent = true, pending = true })
+        end,
+        desc = "Dismiss All Notifications",
+      },
+    },
+    opts = {
+      stages = "static",
+      timeout = 3000,
+      max_height = function()
+        return math.floor(vim.o.lines * 0.75)
+      end,
+      max_width = function()
+        return math.floor(vim.o.columns * 0.75)
+      end,
+      on_open = function(win)
+        vim.api.nvim_win_set_config(win, { zindex = 100 })
+      end,
+    },
   },
   {
     "stevearc/oil.nvim",
@@ -130,11 +164,7 @@ return {
   },
   {
     "folke/zen-mode.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    opts = {},
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -142,12 +172,26 @@ return {
     ---@module "ibl"
     ---@type ibl.config
     opts = {
-      indent = { char = "▏" },
-      scope = {
-        show_start = false,
-        show_end = false,
+      indent = {
+        char = "│",
+        tab_char = "│",
       },
-      exclude = { filetypes = { "dashboard" } },
+      scope = { show_start = false, show_end = false },
+      exclude = {
+        filetypes = {
+          "help",
+          "alpha",
+          "dashboard",
+          "neo-tree",
+          "Trouble",
+          "trouble",
+          "lazy",
+          "mason",
+          "notify",
+          "toggleterm",
+          "lazyterm",
+        },
+      },
     },
   },
 }

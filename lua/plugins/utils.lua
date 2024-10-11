@@ -98,7 +98,7 @@ return {
         height = 0.9,
         width = 0.9,
       },
-      blend = 20,
+      blend = 10,
     },
     keys = {
       {

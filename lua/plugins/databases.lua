@@ -13,8 +13,8 @@ return {
     "DBUIFindBuffer",
   },
   keys = {
-    { "<leader>db", ":DBUIToggle<CR>", mode = "n" },
-    { "<leader>dc", ":DBUIAddConnection<CR>", mode = "n" },
+    { "<leader>DB", ":DBUIToggle<CR>", mode = "n", desc = "Toggle DB UI" },
+    { "<leader>DC", ":DBUIAddConnection<CR>", mode = "n", desc = "Add DB Connection" },
   },
   config = function()
     -- Your DBUI configuration
