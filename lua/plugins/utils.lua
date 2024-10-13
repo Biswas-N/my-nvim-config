@@ -102,13 +102,13 @@ return {
     },
     keys = {
       {
-        "<leader>t",
+        "<leader>T",
         "<cmd>lua require('FTerm').toggle()<cr>",
         desc = "Toggle FTerm",
         mode = "n",
       },
       {
-        "<C-t>",
+        "<C-T>",
         '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>',
         desc = "Toggle FTerm",
         mode = "t",
