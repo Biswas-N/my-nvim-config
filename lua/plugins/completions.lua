@@ -1,15 +1,24 @@
 return {
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    build = ":Copilot auth",
-    event = "InsertEnter",
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
     opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-      filetypes = {
-        ["*"] = true,
+      api_key_cmd = "echo $AI_KEY",
+      openai_params = {
+        model = "gpt-4o",
+        frequency_penalty = 0,
+        presence_penalty = 0,
+        max_tokens = 4095,
+        temperature = 0.2,
+        top_p = 0.1,
+        n = 1,
       },
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim", -- optional
+      "nvim-telescope/telescope.nvim",
     },
   },
   {
@@ -22,8 +31,6 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
-      "zbirenbaum/copilot.lua",
-      "zbirenbaum/copilot-cmp",
       "onsails/lspkind-nvim",
     },
     config = function()
@@ -32,7 +39,6 @@ return {
 
       -- Enable dependencies
       require("luasnip.loaders.from_vscode").lazy_load() -- loading friendly snippets
-      require("copilot_cmp").setup()
 
       local has_words_before = function()
         unpack = unpack or table.unpack
@@ -60,7 +66,6 @@ return {
             mode = "symbol_text", -- Show symbol and text
             maxwidth = 50, -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             ellipsis_char = "...", -- When popup menu exceed maxwidth, the truncated part will show ellipsis_char instead
-            symbol_map = { Copilot = "" },
           }),
         },
         mapping = cmp.mapping.preset.insert({
@@ -105,7 +110,6 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" }, -- For luasnip users.
-          { name = "copilot" }, -- For Github Copilot.
         }, {
           { name = "buffer" },
         }),
