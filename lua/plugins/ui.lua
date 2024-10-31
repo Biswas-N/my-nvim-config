@@ -10,7 +10,7 @@ return {
           enable = true,
         },
         shortcut = {
-          { desc = "Lazy", action = "Lazy", key = "l" },
+          { desc = "Lazy",    action = "Lazy",    key = "l" },
           { desc = "Lazygit", action = "LazyGit", key = "g" },
           {
             desc = "Files",
@@ -51,45 +51,84 @@ return {
     end,
   },
   {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    opts = {
-      options = {
-        diagnostics = "nvim_lsp",
-        always_show_bufferline = false,
-        offsets = {
-          {
-            filetype = "neo-tree",
-            text = "Neo-tree",
-            highlight = "Directory",
-            text_align = "left",
-          },
-        },
-      },
-    },
-  },
-  {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
     opts = {
       options = {
+        icons_enabled = true,
         theme = "catppuccin",
+        disabled_filetypes = {},
+        always_divide_middle = true,
       },
       sections = {
+        -- lualine_b = {
+        --   { "filename", path = 1 }, -- This will show the relative path
+        -- },
+        -- lualine_c = { "branch", "diff", "diagnostics" },
+        -- lualine_y = { "filetype" },
+        -- lualine_z = {},
+
+        lualine_a = { "mode" },
         lualine_b = {
-          { "filename", path = 1 }, -- This will show the relative path
+          {
+            "branch",
+            fmt = function(name, _)
+              -- truncate branch name in case the name is too long
+              return string.sub(name, 1, 20)
+            end,
+          },
         },
-        lualine_c = { "branch", "diff", "diagnostics" },
-        lualine_x = { "encoding", "location" },
-        lualine_y = { "filetype" },
+        lualine_c = {
+          {
+            "filename",
+            symbols = {
+              readonly = "[🔒]",
+            },
+            path = 1,
+          },
+          {
+            "diff",
+            source = function()
+              local git_status = vim.b.gitsigns_status_dict
+              if git_status == nil then
+                return
+              end
+
+              local modify_num = git_status.changed
+              local remove_num = git_status.removed
+              local add_num = git_status.added
+
+              local info = { added = add_num, modified = modify_num, removed = remove_num }
+              -- vim.print(info)
+              return info
+            end,
+          },
+        },
+        lualine_x = {
+          {
+            "diagnostics",
+          },
+        },
+        lualine_y = {
+          "encoding",
+          {
+            "fileformat",
+            symbols = {
+              unix = "unix",
+              dos = "win",
+              mac = "mac",
+            },
+          },
+          "filetype",
+        },
         lualine_z = {},
       },
       inactive_sections = {
         lualine_c = { "filename" },
         lualine_x = { "location" },
       },
+      extensions = { "nvim-tree" },
     },
   },
   {
@@ -191,6 +230,7 @@ return {
           "toggleterm",
           "lazyterm",
         },
+        buftypes = { "terminal" },
       },
     },
   },
