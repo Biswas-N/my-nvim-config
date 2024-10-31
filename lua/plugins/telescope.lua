@@ -31,6 +31,13 @@ return {
   },
   -- This is your opts table
   opts = {
+    defaults = {
+      mappings = {
+        i = {
+          ["<c-d>"] = require("telescope.actions").delete_buffer,
+        },
+      },
+    },
     extensions = {
       ["ui-select"] = {
         require("telescope.themes").get_dropdown({}),
