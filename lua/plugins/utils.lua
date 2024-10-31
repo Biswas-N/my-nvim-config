@@ -44,6 +44,9 @@ return {
       },
     },
     opts = {
+      icons = {
+        mappings = false,
+      },
       defaults = {
         ["<leader>x"] = { name = "+REPL" },
         ["<leader>xm"] = { name = "+Mark" },
@@ -155,6 +158,89 @@ return {
         '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>',
         desc = "Toggle FTerm",
         mode = "t",
+      },
+    },
+  },
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    keys = { -- Example mapping to toggle outline
+      { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    },
+    opts = {
+      -- Your setup opts here
+      outline_window = {
+        show_cursorline = true,
+        hide_cursor = true,
+      },
+    },
+  },
+  {
+    "theprimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      menu = {
+        width = vim.api.nvim_win_get_width(0) - 4,
+      },
+      settings = {
+        save_on_toggle = true,
+      },
+    },
+    config = function(_, opts)
+      require("harpoon"):setup(opts)
+    end,
+    keys = {
+      {
+        "<leader>A",
+        function()
+          require("harpoon"):list():add()
+        end,
+        desc = "harpoon file",
+      },
+      {
+        "<leader>a",
+        function()
+          local harpoon = require("harpoon")
+          harpoon.ui:toggle_quick_menu(harpoon:list())
+        end,
+        desc = "harpoon quick menu",
+      },
+      {
+        "<leader>1",
+        function()
+          require("harpoon"):list():select(1)
+        end,
+        desc = "harpoon to file 1",
+      },
+      {
+        "<leader>2",
+        function()
+          require("harpoon"):list():select(2)
+        end,
+        desc = "harpoon to file 2",
+      },
+      {
+        "<leader>3",
+        function()
+          require("harpoon"):list():select(3)
+        end,
+        desc = "harpoon to file 3",
+      },
+      {
+        "<leader>4",
+        function()
+          require("harpoon"):list():select(4)
+        end,
+        desc = "harpoon to file 4",
+      },
+      {
+        "<leader>5",
+        function()
+          require("harpoon"):list():select(5)
+        end,
+        desc = "harpoon to file 5",
       },
     },
   },
