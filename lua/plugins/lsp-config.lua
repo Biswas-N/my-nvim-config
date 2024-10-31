@@ -63,6 +63,7 @@ local language_configs = {
     lsp = {
       name = "marksman",
     },
+    formatters = { "prettierd" },
   },
   lua = {
     lsp = {
