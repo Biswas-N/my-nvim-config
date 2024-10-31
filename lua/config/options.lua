@@ -45,8 +45,6 @@ opt.undofile = true
 opt.undolevels = 10000
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 opt.wrap = false -- Disable line wrap
-opt.foldlevelstart = 99 -- Start with all folds open
-opt.foldenable = true -- Disable folding by default
 opt.conceallevel = 1
 
 -- Set filetype to `bigfile` for files larger than 1.5 MB
@@ -54,3 +52,9 @@ opt.conceallevel = 1
 -- LSP, treesitter and other ft plugins will be disabled.
 -- mini.animate will also be disabled.
 vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
+
+-- Fold settings
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.foldmethod = "manual"
