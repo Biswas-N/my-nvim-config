@@ -38,11 +38,19 @@ return {
     name = "catppuccin",
     opts = {
       integrations = {
+        diffview = true,
         nvimtree = true,
         treesitter = true,
         cmp = true,
         gitsigns = true,
+        harpoon = true,
+        mason = true,
+        neotree = true,
+        noice = true,
         notify = true,
+        nvim_surround = true,
+        dadbod_ui = true,
+        which_key = true,
       },
     },
     config = function(_, opts)
