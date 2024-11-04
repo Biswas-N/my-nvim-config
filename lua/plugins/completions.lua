@@ -3,7 +3,7 @@ return {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     opts = {
-      api_key_cmd = "echo $AI_KEY",
+      api_key_cmd = "echo " .. vim.fn.getenv("AI_KEY"),
       openai_params = {
         model = "gpt-4o",
         frequency_penalty = 0,
