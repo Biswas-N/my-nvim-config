@@ -1,3 +1,7 @@
+local function buffer_count()
+  return #vim.fn.getbufinfo({ buflisted = 1 })
+end
+
 return {
   {
     "nvimdev/dashboard-nvim",
@@ -70,13 +74,6 @@ return {
         always_divide_middle = true,
       },
       sections = {
-        -- lualine_b = {
-        --   { "filename", path = 1 }, -- This will show the relative path
-        -- },
-        -- lualine_c = { "branch", "diff", "diagnostics" },
-        -- lualine_y = { "filetype" },
-        -- lualine_z = {},
-
         lualine_a = { "mode" },
         lualine_b = {
           {
@@ -88,13 +85,6 @@ return {
           },
         },
         lualine_c = {
-          {
-            "filename",
-            symbols = {
-              readonly = "[🔒]",
-            },
-            path = 1,
-          },
           {
             "diff",
             source = function()
@@ -114,29 +104,41 @@ return {
           },
         },
         lualine_x = {
-          {
-            "diagnostics",
-          },
+          "diagnostics",
+          "location",
         },
         lualine_y = {
           "encoding",
-          {
-            "fileformat",
-            symbols = {
-              unix = "unix",
-              dos = "win",
-              mac = "mac",
-            },
-          },
           "filetype",
         },
         lualine_z = {},
       },
       inactive_sections = {
-        lualine_c = { "filename" },
         lualine_x = { "location" },
       },
-      extensions = { "nvim-tree" },
+      winbar = {
+        lualine_c = {
+          {
+            "filename",
+            symbols = {
+              readonly = "[🔒]",
+            },
+            path = 1,
+          },
+        },
+        lualine_x = {
+          {
+            buffer_count,
+            color = { fg = "#ff9e64" },
+          },
+        },
+      },
+      inactive_winbar = {
+        lualine_c = {
+          "filename",
+        },
+      },
+      extensions = { "nvim-tree", "oil", "lazy", "mason", "nvim-dap-ui", "symbols-outline", "trouble" },
     },
   },
   {
@@ -287,5 +289,11 @@ return {
         buftypes = { "terminal" },
       },
     },
+  },
+  {
+    "fei6409/log-highlight.nvim",
+    config = function()
+      require("log-highlight").setup({})
+    end,
   },
 }

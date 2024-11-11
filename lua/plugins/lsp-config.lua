@@ -65,6 +65,12 @@ local language_configs = {
     },
     formatters = { "prettierd" },
   },
+  toml = {
+    lsp = {
+      name = "taplo",
+    },
+    formatters = { "taplo" },
+  },
   lua = {
     lsp = {
       name = "lua_ls",
