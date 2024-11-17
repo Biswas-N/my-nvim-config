@@ -86,6 +86,13 @@ return {
         },
         lualine_c = {
           {
+            "filename",
+            symbols = {
+              readonly = "[🔒]",
+            },
+            path = 1,
+          },
+          {
             "diff",
             source = function()
               local git_status = vim.b.gitsigns_status_dict
@@ -114,31 +121,32 @@ return {
         lualine_z = {},
       },
       inactive_sections = {
+        lualine_c = { "filename" },
         lualine_x = { "location" },
       },
-      winbar = {
-        lualine_c = {
-          {
-            "filename",
-            symbols = {
-              readonly = "[🔒]",
-            },
-            path = 1,
-          },
-        },
-        lualine_x = {
-          {
-            buffer_count,
-            color = { fg = "#ff9e64" },
-          },
-        },
-      },
-      inactive_winbar = {
-        lualine_c = {
-          "filename",
-        },
-      },
       extensions = { "nvim-tree", "oil", "lazy", "mason", "nvim-dap-ui", "symbols-outline", "trouble" },
+    },
+  },
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    opts = {
+      options = {
+        offsets = {
+          {
+            filetype = "neo-tree",
+            text = "File Explorer",
+            separator = true,
+            text_align = "left",
+          },
+        },
+        diagnostics = "nvim_lsp",
+        separator_style = { "", "" },
+        modified_icon = "●",
+        show_close_icon = false,
+        show_buffer_close_icons = true,
+      },
     },
   },
   {
@@ -191,6 +199,15 @@ return {
     lazy = true,
     opts = {
       close_if_last_window = true,
+      enable_git_status = true,
+      enable_diagnostics = true,
+      window = {
+        position = "left",
+        width = 40,
+        mappings = {
+          Y = "copy_selector",
+        },
+      },
       filesystem = {
         follow_current_file = {
           enabled = true,
@@ -237,11 +254,6 @@ return {
             end
           end)
         end,
-      },
-      window = {
-        mappings = {
-          Y = "copy_selector",
-        },
       },
     },
     keys = {

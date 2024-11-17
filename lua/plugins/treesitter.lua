@@ -18,7 +18,9 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    opts = {},
+    opts = {
+      multiline_threshold = 1, -- Maximum number of lines to show for a single context
+    },
     build = ":TSContextEnable",
     event = "BufRead",
     key = {
