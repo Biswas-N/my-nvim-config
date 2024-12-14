@@ -69,7 +69,6 @@ local language_configs = {
     lsp = {
       name = "taplo",
     },
-    formatters = { "taplo" },
   },
   lua = {
     lsp = {
@@ -111,8 +110,6 @@ local language_configs = {
         end,
       },
     },
-    -- formatters = { "ruff" },
-    diagnostics = { "ruff" },
   },
   rust = {
     lsp = {
