@@ -1,7 +1,3 @@
-local function buffer_count()
-  return #vim.fn.getbufinfo({ buflisted = 1 })
-end
-
 return {
   {
     "nvimdev/dashboard-nvim",
@@ -133,14 +129,6 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     opts = {
       options = {
-        offsets = {
-          {
-            filetype = "neo-tree",
-            text = "File Explorer",
-            separator = true,
-            text_align = "left",
-          },
-        },
         diagnostics = "nvim_lsp",
         separator_style = { "", "" },
         modified_icon = "●",
@@ -189,87 +177,6 @@ return {
     },
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-    lazy = true,
-    opts = {
-      close_if_last_window = true,
-      enable_git_status = true,
-      enable_diagnostics = true,
-      window = {
-        position = "left",
-        width = 40,
-        mappings = {
-          Y = "copy_selector",
-        },
-      },
-      filesystem = {
-        follow_current_file = {
-          enabled = true,
-        },
-        hijack_netrw_behavior = "open_default",
-      },
-      commands = {
-        copy_selector = function(state)
-          -- NeoTree is based on [NuiTree](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree)
-          -- The node is based on [NuiNode](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree#nuitreenode)
-          local node = state.tree:get_node()
-          local filepath = node:get_id()
-          local filename = node.name
-          local modify = vim.fn.fnamemodify
-
-          local results = {
-            filepath,
-            modify(filepath, ":."),
-            modify(filepath, ":~"),
-            filename,
-            modify(filename, ":r"),
-            modify(filename, ":e"),
-          }
-
-          vim.ui.select({
-            "1. Absolute path: " .. results[1],
-            "2. Path relative to CWD: " .. results[2],
-            "3. Path relative to HOME: " .. results[3],
-            "4. Filename: " .. results[4],
-            "5. Filename without extension: " .. results[5],
-            "6. Extension of the filename: " .. results[6],
-          }, { prompt = "Choose to copy to clipboard:" }, function(choice)
-            if choice then
-              local i = tonumber(choice:sub(1, 1))
-              if i then
-                local result = results[i]
-                vim.fn.setreg("+", result)
-                vim.notify("Copied: " .. result)
-              else
-                vim.notify("Invalid selection")
-              end
-            else
-              vim.notify("Selection cancelled")
-            end
-          end)
-        end,
-      },
-    },
-    keys = {
-      { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
-    },
-    init = function()
-      vim.g.neo_tree_remove_legacy_commands = true
-      -- if vim.fn.argc() == 1 then
-      --   local stat = vim.loop.fs_stat(vim.fn.argv(0))
-      --   if stat and stat.type == "directory" then
-      --     require("neo-tree")
-      --   end
-      -- end
-    end,
-  },
-  {
     "folke/zen-mode.nvim",
     opts = {},
   },
@@ -289,7 +196,6 @@ return {
           "help",
           "alpha",
           "dashboard",
-          "neo-tree",
           "Trouble",
           "trouble",
           "lazy",
