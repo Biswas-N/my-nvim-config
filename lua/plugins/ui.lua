@@ -1,37 +1,5 @@
 return {
   {
-    "nvimdev/dashboard-nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    event = "VimEnter",
-    opts = {
-      theme = "hyper",
-      config = {
-        week_header = {
-          enable = true,
-        },
-        shortcut = {
-          { desc = "Lazy", action = "Lazy", key = "l" },
-          { desc = "Lazygit", action = "LazyGit", key = "g" },
-          {
-            desc = "Files",
-            action = "Telescope find_files",
-            key = "f",
-          },
-          {
-            desc = "Commits",
-            action = "Telescope git_commits",
-            key = "c",
-          },
-          {
-            desc = "Quit",
-            action = "qa",
-            key = "q",
-          },
-        },
-      },
-    },
-  },
-  {
     "catppuccin/nvim",
     priority = 1000,
     lazy = false,
@@ -50,7 +18,6 @@ return {
         notify = true,
         nvim_surround = true,
         dadbod_ui = true,
-        which_key = true,
       },
     },
     config = function(_, opts)
@@ -120,7 +87,7 @@ return {
         lualine_c = { "filename" },
         lualine_x = { "location" },
       },
-      extensions = { "nvim-tree", "oil", "lazy", "mason", "nvim-dap-ui", "symbols-outline", "trouble" },
+      extensions = { "nvim-tree", "lazy", "mason", "nvim-dap-ui", "symbols-outline", "trouble" },
     },
   },
   {
@@ -163,20 +130,6 @@ return {
     },
   },
   {
-    "stevearc/oil.nvim",
-    dependencies = { "echasnovski/mini.icons", "nvim-tree/nvim-web-devicons" },
-    event = "VimEnter",
-    opts = {},
-    keys = {
-      {
-        "-",
-        "<cmd>Oil<CR>",
-        desc = "Open Oil",
-        mode = "n",
-      },
-    },
-  },
-  {
     "folke/zen-mode.nvim",
     opts = {},
   },
@@ -195,7 +148,6 @@ return {
         filetypes = {
           "help",
           "alpha",
-          "dashboard",
           "Trouble",
           "trouble",
           "lazy",

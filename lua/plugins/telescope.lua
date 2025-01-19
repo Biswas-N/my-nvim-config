@@ -5,19 +5,21 @@ return {
     -- add a keymap to browse plugin files
     -- stylua: ignore
     {
-      "<leader><leader>",
-      function() require("telescope.builtin").find_files() end,
-      desc = "Find by Filename",
-    },
-    {
-      "<leader>sg",
+      "<leader>/",
       function()
         require("telescope.builtin").live_grep()
       end,
-      desc = "Find by GREP",
+      desc = "Workspace Search",
     },
     {
-      "<leader>sb",
+      "<leader>f",
+      function()
+        require("telescope.builtin").find_files()
+      end,
+      desc = "Find by Filename",
+    },
+    {
+      "<leader>bb",
       function()
         require("telescope.builtin").buffers()
       end,

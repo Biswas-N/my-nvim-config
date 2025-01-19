@@ -33,11 +33,6 @@ return {
     },
   },
   {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    opts = {},
-  },
-  {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {},
@@ -49,11 +44,33 @@ return {
   {
     "echasnovski/mini.nvim",
     version = "*",
+    keys = {
+      {
+        "<leader>bd",
+        "<cmd>lua MiniBufremove.delete(0, false)<cr>",
+        desc = "Delete buffer (keep window layout)",
+      },
+      {
+        "<leader>bD",
+        "<cmd>lua MiniBufremove.delete(0, true)<cr>",
+        desc = "Force delete buffer (keep window layout)",
+      },
+      {
+        "<leader>e",
+        "<cmd>lua MiniFiles.open()<cr>",
+        desc = "Open Mini Files",
+      },
+    },
     config = function()
       -- Enable sub-plugins
+      require("mini.ai").setup()
       require("mini.surround").setup()
       require("mini.comment").setup()
-      require("mini.ai").setup()
+      require("mini.pairs").setup()
+      require("mini.bracketed").setup()
+      require("mini.bufremove").setup()
+      require("mini.files").setup()
+      require("mini.starter").setup()
     end,
   },
   {
@@ -145,81 +162,13 @@ return {
     lazy = true,
     cmd = { "Outline", "OutlineOpen" },
     keys = { -- Example mapping to toggle outline
-      { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+      { "<leader>s", "<cmd>Outline<CR>", desc = "Toggle Symbols" },
     },
     opts = {
       -- Your setup opts here
       outline_window = {
         show_cursorline = true,
         hide_cursor = true,
-      },
-    },
-  },
-  {
-    "theprimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      menu = {
-        width = vim.api.nvim_win_get_width(0) - 4,
-      },
-      settings = {
-        save_on_toggle = true,
-      },
-    },
-    config = function(_, opts)
-      require("harpoon"):setup(opts)
-    end,
-    keys = {
-      {
-        "<leader>A",
-        function()
-          require("harpoon"):list():add()
-        end,
-        desc = "harpoon file",
-      },
-      {
-        "<leader>a",
-        function()
-          local harpoon = require("harpoon")
-          harpoon.ui:toggle_quick_menu(harpoon:list())
-        end,
-        desc = "harpoon quick menu",
-      },
-      {
-        "<leader>1",
-        function()
-          require("harpoon"):list():select(1)
-        end,
-        desc = "harpoon to file 1",
-      },
-      {
-        "<leader>2",
-        function()
-          require("harpoon"):list():select(2)
-        end,
-        desc = "harpoon to file 2",
-      },
-      {
-        "<leader>3",
-        function()
-          require("harpoon"):list():select(3)
-        end,
-        desc = "harpoon to file 3",
-      },
-      {
-        "<leader>4",
-        function()
-          require("harpoon"):list():select(4)
-        end,
-        desc = "harpoon to file 4",
-      },
-      {
-        "<leader>5",
-        function()
-          require("harpoon"):list():select(5)
-        end,
-        desc = "harpoon to file 5",
       },
     },
   },
