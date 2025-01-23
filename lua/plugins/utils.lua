@@ -44,6 +44,7 @@ return {
   {
     "echasnovski/mini.nvim",
     version = "*",
+    event = "VimEnter",
     keys = {
       {
         "<leader>bd",

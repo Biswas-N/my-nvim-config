@@ -18,6 +18,7 @@ return {
         notify = true,
         nvim_surround = true,
         dadbod_ui = true,
+        which_key = true,
       },
     },
     config = function(_, opts)
@@ -33,7 +34,9 @@ return {
       options = {
         icons_enabled = true,
         theme = "catppuccin",
-        disabled_filetypes = {},
+        disabled_filetypes = {
+          winbar = { "dapui_watches", "dapui_breakpoints", "dapui_scopes", "dapui_console", "dapui_stacks", "dap-repl" },
+        },
         always_divide_middle = true,
       },
       sections = {

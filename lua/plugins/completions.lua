@@ -45,6 +45,7 @@ return {
             mode = "symbol_text", -- Show symbol and text
             maxwidth = 50, -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             ellipsis_char = "...", -- When popup menu exceed maxwidth, the truncated part will show ellipsis_char instead
+            symbol_map = { Copilot = "" }, -- Add a symbol for Copilot
           }),
         },
         mapping = cmp.mapping.preset.insert({
@@ -156,6 +157,7 @@ return {
         "MeanderingProgrammer/render-markdown.nvim",
         opts = {
           file_types = { "markdown", "Avante" },
+          latex = { enabled = false },
         },
         ft = { "markdown", "Avante" },
       },
@@ -163,8 +165,10 @@ return {
   },
   {
     "zbirenbaum/copilot-cmp",
-    event = "InsertEnter",
-    config = function () require("copilot_cmp").setup() end,
+    event = "VeryLazy",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
     dependencies = {
       "zbirenbaum/copilot.lua",
       cmd = "Copilot",
