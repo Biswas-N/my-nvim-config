@@ -151,7 +151,7 @@ return {
         mode = "n",
       },
       {
-        "<C-T>",
+        "<esc>T",
         '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>',
         desc = "Toggle FTerm",
         mode = "t",

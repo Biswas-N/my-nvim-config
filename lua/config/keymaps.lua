@@ -59,6 +59,9 @@ map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 map("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
 
+-- better terminal navigation
+map("t", "<esc>t", "<C-\\><C-n>", { desc = "Exit Terminal" })
+
 -- ############################################################################
 --                             Image section
 -- ############################################################################
