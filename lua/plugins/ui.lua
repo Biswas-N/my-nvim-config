@@ -86,25 +86,34 @@ return {
         },
         lualine_z = {},
       },
-      inactive_sections = {
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
+      tabline = {
+        lualine_c = {
+          {
+            function()
+              local current_tab = vim.fn.tabpagenr()
+              local buffers_in_tab = {}
+
+              -- Get buffers that belong to the current tab
+              for _, win in ipairs(vim.api.nvim_tabpage_list_wins(current_tab)) do
+                local buf = vim.api.nvim_win_get_buf(win)
+                local bufname = vim.fn.bufname(buf)
+                if bufname ~= "" then
+                  table.insert(buffers_in_tab, vim.fn.fnamemodify(bufname, ":t"))
+                end
+              end
+
+              -- Format the buffer names nicely
+              if #buffers_in_tab > 0 then
+                return table.concat(buffers_in_tab, " | ")
+              else
+                return "No Buffers"
+              end
+            end
+          }
+        },
+        lualine_z = {"tabs"},
       },
       extensions = { "nvim-tree", "lazy", "mason", "nvim-dap-ui", "symbols-outline", "trouble" },
-    },
-  },
-  {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    opts = {
-      options = {
-        diagnostics = "nvim_lsp",
-        separator_style = { "", "" },
-        modified_icon = "●",
-        show_close_icon = false,
-        show_buffer_close_icons = true,
-      },
     },
   },
   {

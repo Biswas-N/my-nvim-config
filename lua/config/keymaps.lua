@@ -62,6 +62,15 @@ map("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
 -- better terminal navigation
 map("t", "<esc>t", "<C-\\><C-n>", { desc = "Exit Terminal" })
 
+-- better tabs
+map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
+map("n", "<leader>th", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+map("n", "<leader>tH", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map("n", "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader>tL", "<cmd>tablast<cr>", { desc = "Last Tab" })
+
 -- ############################################################################
 --                             Image section
 -- ############################################################################
