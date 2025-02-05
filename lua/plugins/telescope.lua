@@ -19,7 +19,7 @@ return {
       desc = "Find by Filename",
     },
     {
-      "<leader>bb",
+      "<leader>o",
       function()
         require("telescope.builtin").buffers()
       end,

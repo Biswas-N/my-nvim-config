@@ -56,11 +56,6 @@ return {
         "<cmd>lua MiniBufremove.delete(0, true)<cr>",
         desc = "Force delete buffer (keep window layout)",
       },
-      {
-        "<leader>e",
-        "<cmd>lua MiniFiles.open()<cr>",
-        desc = "Open Mini Files",
-      },
     },
     config = function()
       -- Enable sub-plugins
@@ -70,7 +65,6 @@ return {
       require("mini.pairs").setup()
       require("mini.bracketed").setup()
       require("mini.bufremove").setup()
-      require("mini.files").setup()
       require("mini.starter").setup()
     end,
   },

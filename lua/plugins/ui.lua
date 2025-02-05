@@ -178,4 +178,29 @@ return {
       require("log-highlight").setup({})
     end,
   },
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      -- Configuration for the floating window in oil.open_float
+      float = {
+        -- Padding around the floating window
+        padding = 5,
+      },
+    },
+    keys = {
+      {
+        "<leader>e",
+        "<CMD>Oil --float<CR>",
+        desc = "Open parent directory",
+        mode = "n",
+      },
+    },
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  }
 }
