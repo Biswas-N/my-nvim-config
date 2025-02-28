@@ -44,6 +44,15 @@ return {
     version = "*",
     lazy = true,
     ft = "markdown",
+    event = {
+      "VimEnter",
+    },
+    config = function(_, opts)
+      -- Ensure obsidian.nvim loads if Neovim starts inside ~/Documents/Notes/
+      if vim.fn.getcwd():match(vim.fn.expand("~/Documents/Notes")) then
+        require("obsidian").setup(opts)
+      end
+    end,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
