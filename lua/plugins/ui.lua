@@ -40,7 +40,16 @@ return {
         always_divide_middle = true,
       },
       sections = {
-        lualine_a = { "mode" },
+        lualine_a = {
+          {
+            "mode",
+            icons_enabled = true,
+            fmt = function(name, _)
+              -- truncate mode name to only 3 characters
+              return string.sub(name, 1, 3)
+            end,
+          },
+        },
         lualine_b = {
           {
             "branch",
@@ -108,10 +117,10 @@ return {
               else
                 return "No Buffers"
               end
-            end
-          }
+            end,
+          },
         },
-        lualine_z = {"tabs"},
+        lualine_z = { "tabs" },
       },
       extensions = { "nvim-tree", "lazy", "mason", "nvim-dap-ui", "symbols-outline", "trouble" },
     },
@@ -179,7 +188,7 @@ return {
     end,
   },
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {
@@ -202,5 +211,5 @@ return {
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
-  }
+  },
 }
