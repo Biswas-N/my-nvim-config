@@ -2,7 +2,9 @@
   "extras": [
     "lazyvim.plugins.extras.ai.copilot",
     "lazyvim.plugins.extras.lang.python",
-    "lazyvim.plugins.extras.util.rest"
+    "lazyvim.plugins.extras.test.core",
+    "lazyvim.plugins.extras.util.rest",
+    "lazyvim.plugins.extras.vscode"
   ],
   "install_version": 8,
   "news": {
