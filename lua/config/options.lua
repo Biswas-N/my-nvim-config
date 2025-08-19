@@ -7,7 +7,10 @@ vim.g.lazyvim_python_lsp = "pyright"
 vim.g.lazyvim_python_ruff = "ruff"
 
 -- Disabling snakcs.nvim animations
-vim.g.snacks_animate = false
+vim.g.snacks_animate = true
 
 -- Rust config
 vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
+
+-- Python config
+vim.g.python3_host_prog = "~/.pyenv/versions/nvim/bin/python"
