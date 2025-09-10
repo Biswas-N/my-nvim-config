@@ -3,6 +3,7 @@ return {
     "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",
+    version = "v1.11.0",
     opts = {
       integrations = {
         aerial = true,
